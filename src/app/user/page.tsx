@@ -11,6 +11,8 @@ import {
   TableHeader,
   TableRow
 } from "@/components/ui/table";
+import { FaPencil } from "react-icons/fa6";
+import { MdDelete } from "react-icons/md";
 
 export const metadata: Metadata = {
   title: `${SITE_TITLE} - User`,
@@ -19,12 +21,12 @@ export const metadata: Metadata = {
 
 export default function User() {
   return (
-    <main className="h-[100vh] bg-[#211E19] p-[100px]">
-      <Table className="text-white">
+    <main className="p-4">
+      <Table>
         <TableHeader>
           <TableRow>
             <TableHead className="w-[100px]">id</TableHead>
-            <TableHead>Name</TableHead>
+            <TableHead>Full Name</TableHead>
             <TableHead>Email</TableHead>
             <TableHead>UserName</TableHead>
             <TableHead>Role</TableHead>
@@ -38,16 +40,11 @@ export default function User() {
             <TableCell>ivan@gmail.com</TableCell>
             <TableCell>Ivan</TableCell>
             <TableCell>Developer</TableCell>
-            <TableCell className="text-right">
+            <TableCell className="flex flex-row gap-[20px] text-right">
               <Link href="/user/id">
-                <button className="w-[55px] rounded-lg border-black bg-white p-[3px] text-black">
-                  edit
-                </button>
+                <FaPencil />
               </Link>
-
-              <button className="ml-[10px] w-[55px] rounded-lg border-black bg-white p-[3px] text-black">
-                delete
-              </button>
+              <MdDelete />
             </TableCell>
           </TableRow>
         </TableBody>
