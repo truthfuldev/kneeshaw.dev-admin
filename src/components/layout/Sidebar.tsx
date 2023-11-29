@@ -2,97 +2,84 @@
 
 import Link from "next/link";
 
-import {
-  NavigationMenu,
-  NavigationMenuContent,
-  NavigationMenuIndicator,
-  NavigationMenuItem,
-  NavigationMenuLink,
-  NavigationMenuList,
-  NavigationMenuTrigger,
-  NavigationMenuViewport
-} from "@/components/ui/navigation-menu";
-import { navigationMenuTriggerStyle } from "@/components/ui/navigation-menu";
+import Logo from "./Logo";
+import clsx from "clsx";
+import { usePathname } from "next/navigation";
 
 export default function Sidebar() {
+  const pathName = usePathname();
+
   return (
     <aside className="hidden h-[100vh] w-[240px] flex-col border-r-[1px] p-4 sm:flex">
-      <div>Logo</div>
-
-      <div className="flex-1">
-        <NavigationMenu orientation="vertical">
-          <NavigationMenuList className="flex-col">
-            <NavigationMenuItem>
-              <Link href="/" legacyBehavior passHref>
-                <NavigationMenuLink className={navigationMenuTriggerStyle()}>
-                  Dashboard
-                </NavigationMenuLink>
-              </Link>
-            </NavigationMenuItem>
-
-            <NavigationMenuItem>
-              <Link href="/user" legacyBehavior passHref>
-                <NavigationMenuLink className={navigationMenuTriggerStyle()}>
-                  User
-                </NavigationMenuLink>
-              </Link>
-            </NavigationMenuItem>
-
-            <NavigationMenuItem>
-              <Link href="/game" legacyBehavior passHref>
-                <NavigationMenuLink className={navigationMenuTriggerStyle()}>
-                  Game
-                </NavigationMenuLink>
-              </Link>
-            </NavigationMenuItem>
-
-            <NavigationMenuItem>
-              <Link href="/blog" legacyBehavior passHref>
-                <NavigationMenuLink className={navigationMenuTriggerStyle()}>
-                  Blog
-                </NavigationMenuLink>
-              </Link>
-            </NavigationMenuItem>
-
-            <NavigationMenuItem>
-              <Link href="/service" legacyBehavior passHref>
-                <NavigationMenuLink className={navigationMenuTriggerStyle()}>
-                  Service
-                </NavigationMenuLink>
-              </Link>
-            </NavigationMenuItem>
-
-            <NavigationMenuItem>
-              <Link href="/job" legacyBehavior passHref>
-                <NavigationMenuLink className={navigationMenuTriggerStyle()}>
-                  Job
-                </NavigationMenuLink>
-              </Link>
-            </NavigationMenuItem>
-          </NavigationMenuList>
-        </NavigationMenu>
+      <div className="flex justify-center py-4">
+        <Logo />
       </div>
 
-      <div>
-        <NavigationMenu orientation="vertical">
-          <NavigationMenuList className="flex-col">
-            <NavigationMenuItem>
-              <Link href="/settings" legacyBehavior passHref>
-                <NavigationMenuLink className={navigationMenuTriggerStyle()}>
-                  Settings
-                </NavigationMenuLink>
-              </Link>
-            </NavigationMenuItem>
+      <div className="flex flex-1 flex-col gap-4">
+        <Link
+          href="/"
+          className={clsx("text-[16px] ", pathName === "/" && "font-bold")}
+        >
+          Dashboard
+        </Link>
+        <Link
+          href="/user"
+          className={clsx(
+            "text-[16px] ",
+            pathName.includes("/user") && "font-bold"
+          )}
+        >
+          User
+        </Link>
+        <Link
+          href="/game"
+          className={clsx(
+            "text-[16px] ",
+            pathName.includes("/game") && "font-bold"
+          )}
+        >
+          Game
+        </Link>
+        <Link
+          href="/blog"
+          className={clsx(
+            "text-[16px] ",
+            pathName.includes("/blog") && "font-bold"
+          )}
+        >
+          Blog
+        </Link>
+        <Link
+          href="/service"
+          className={clsx(
+            "text-[16px] ",
+            pathName.includes("/service") && "font-bold"
+          )}
+        >
+          Service
+        </Link>
+        <Link
+          href="/job"
+          className={clsx(
+            "text-[16px] ",
+            pathName.includes("/job") && "font-bold"
+          )}
+        >
+          Job
+        </Link>
+      </div>
 
-            <NavigationMenuItem>
-              <Link href="/job" legacyBehavior passHref>
-                <NavigationMenuLink className={navigationMenuTriggerStyle()}>
-                  Sign Out
-                </NavigationMenuLink>
-              </Link>
-            </NavigationMenuItem>
-          </NavigationMenuList>
-        </NavigationMenu>
+      <div className="flex flex-col gap-4">
+        <Link
+          href="/settings"
+          className={clsx(
+            "text-[16px] ",
+            pathName.includes("/settings") && "font-bold"
+          )}
+        >
+          Settings
+        </Link>
+        <Link href="/">Sign Out</Link>
       </div>
     </aside>
   );
