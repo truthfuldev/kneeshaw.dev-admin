@@ -1,6 +1,7 @@
 import { Metadata } from "next";
 
 import { SITE_TITLE } from "@/utils/constants";
+import Layout from "@/components/layout";
 
 export const metadata: Metadata = {
   title: `${SITE_TITLE} - Dashboard`,
@@ -8,5 +9,5 @@ export const metadata: Metadata = {
 };
 
 export default function Dashboard() {
-  return <>Dashboard</>;
+  return <Layout>Dashboard</Layout>;
 }
