@@ -9,5 +9,5 @@ export const metadata: Metadata = {
 };
 
 export default function SignIn() {
-  return <Layout>SignIn</Layout>;
+  return <>SignIn</>;
 }
