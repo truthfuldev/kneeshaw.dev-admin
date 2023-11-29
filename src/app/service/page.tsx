@@ -3,10 +3,10 @@ import { Metadata } from "next";
 import { SITE_TITLE } from "@/utils/constants";
 
 export const metadata: Metadata = {
-  title: `${SITE_TITLE} - Sign In`,
-  description: `${SITE_TITLE} - Sign In`
+  title: `${SITE_TITLE} - Service`,
+  description: `${SITE_TITLE} - Service`
 };
 
-export default function SignIn() {
-  return <>SignIn</>;
+export default function Service() {
+  return <>Service</>;
 }

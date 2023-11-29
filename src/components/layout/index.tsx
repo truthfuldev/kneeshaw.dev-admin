@@ -11,7 +11,7 @@ export default function Layout({ children }: LayoutProps) {
     <div className="flex flex-row gap-2">
       <Sidebar />
 
-      {children}
+      <div className="flex flex-1 flex-col p-4">{children}</div>
     </div>
   );
 }
