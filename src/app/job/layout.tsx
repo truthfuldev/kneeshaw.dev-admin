@@ -1,7 +1,7 @@
 import { Metadata } from "next";
 
 import { SITE_TITLE } from "@/utils/constants";
-import SwitchBar from "@/components/job/SwitchBar";
+import TabBar from "@/components/job/TabBar";
 import Layout from "@/components/layout";
 
 export const metadata: Metadata = {
@@ -12,7 +12,7 @@ export const metadata: Metadata = {
 export default function JobLayout({ children }: any) {
   return (
     <Layout>
-      <SwitchBar />
+      <TabBar />
       {children}
     </Layout>
   );
