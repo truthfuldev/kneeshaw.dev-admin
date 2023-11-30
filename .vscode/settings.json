@@ -1,5 +1,17 @@
 {
-  "cSpell.words": ["clsx", "kneeshaw", "Parens", "tailwindcss"],
+  "cSpell.words": [
+    "clsx",
+    "kneeshaw",
+    "Laravel",
+    "maxium",
+    "Parens",
+    "hookform",
+    "kneeshaw",
+    "NEXTAUTH",
+    "Parens",
+    "signin",
+    "tailwindcss"
+  ],
   "editor.codeActionsOnSave": {
     "source.fixAll.eslint": true,
     "source.fixAll.format": true
