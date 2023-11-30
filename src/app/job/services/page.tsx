@@ -9,6 +9,7 @@ import {
   TableHeader,
   TableRow
 } from "@/components/ui/table";
+import { LuPlusCircle } from "react-icons/lu";
 import { Button } from "@/components/ui/button";
 import { HiOutlinePencilSquare } from "react-icons/hi2";
 import { MdDeleteOutline } from "react-icons/md";
@@ -55,8 +56,9 @@ export default function Services() {
   return (
     <section className="mt-[50px] flex flex-col gap-[20px]">
       <div className="mr-[20px] flex justify-end">
-        <Button type="button" variant="outline">
-          Add
+        <Button type="button">
+          <LuPlusCircle className="text-lg" />
+          <span className="ml-[5px] text-[16px]">Add</span>{" "}
         </Button>
       </div>
 
