@@ -9,6 +9,7 @@ import {
   TableHeader,
   TableRow
 } from "@/components/ui/table";
+import { FaRegSquarePlus } from "react-icons/fa6";
 import { Button } from "@/components/ui/button";
 import { HiOutlinePencilSquare } from "react-icons/hi2";
 import { MdDeleteOutline } from "react-icons/md";
@@ -65,8 +66,9 @@ export default function Skills() {
   return (
     <section className="mt-[50px] flex flex-col gap-[20px]">
       <div className="mr-[20px] flex justify-end">
-        <Button type="button" variant="outline">
-          Add
+        <Button type="button">
+          <FaRegSquarePlus className="text-lg" />
+          <span className="ml-[5px] text-[16px]">Add</span>
         </Button>
       </div>
 
