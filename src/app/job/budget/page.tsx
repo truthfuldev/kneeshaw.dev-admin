@@ -24,32 +24,40 @@ export default function Budget() {
         <div className="flex flex-col gap-[48px]">
           <div className="flex flex-row items-center gap-[36px]">
             <p className="text-[24px] font-[500]">minium:</p>
+
             <div className="flex flex-row items-center gap-[12px]">
               <div className="relative flex max-w-[180px]">
                 <Input
                   placeholder="15"
                   className="text-center text-[24px] font-[700] "
                 />
+
                 <div className="absolute right-[5px] top-[4px]">
-                  <TiArrowSortedUp /> <TiArrowSortedDown />
+                  <TiArrowSortedUp />
+                  <TiArrowSortedDown />
                 </div>
               </div>
+
               <span className="text-[18px] font-[400]">$</span>
             </div>
           </div>
 
           <div className="flex flex-row items-center gap-[32px]">
             <p className="text-[24px] font-[500]">maxium:</p>
+
             <div className="flex flex-row items-center gap-[12px]">
               <div className="relative flex max-w-[180px]">
                 <Input
                   placeholder="30"
                   className="text-center text-[24px] font-[700] "
                 />
+
                 <div className="absolute right-[5px] top-[4px]">
-                  <TiArrowSortedUp /> <TiArrowSortedDown />
+                  <TiArrowSortedUp />
+                  <TiArrowSortedDown />
                 </div>
               </div>
+
               <span className="text-[18px] font-[400]">$</span>
             </div>
           </div>
@@ -64,32 +72,40 @@ export default function Budget() {
         <div className="flex flex-col gap-[48px]">
           <div className="flex flex-row items-center gap-[36px]">
             <p className="text-[24px] font-[500]">minium:</p>
+
             <div className="flex flex-row items-center gap-[12px]">
               <div className="relative flex max-w-[180px]">
                 <Input
                   placeholder="300"
                   className="text-center text-[24px] font-[700] "
                 />
+
                 <div className="absolute right-[5px] top-[4px]">
-                  <TiArrowSortedUp /> <TiArrowSortedDown />
+                  <TiArrowSortedUp />
+                  <TiArrowSortedDown />
                 </div>
               </div>
+
               <span className="text-[18px] font-[400]">$</span>
             </div>
           </div>
 
           <div className="flex flex-row items-center gap-[32px]">
             <p className="text-[24px] font-[500]">maxium:</p>
+
             <div className="flex flex-row items-center gap-[12px]">
               <div className="relative flex max-w-[180px]">
                 <Input
                   placeholder="5000"
                   className="text-center text-[24px] font-[700] "
                 />
+
                 <div className="absolute right-[5px] top-[4px]">
-                  <TiArrowSortedUp /> <TiArrowSortedDown />
+                  <TiArrowSortedUp />
+                  <TiArrowSortedDown />
                 </div>
               </div>
+
               <span className="text-[18px] font-[400]">$</span>
             </div>
           </div>

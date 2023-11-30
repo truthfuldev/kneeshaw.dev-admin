@@ -5,6 +5,11 @@
     "Laravel",
     "maxium",
     "Parens",
+    "hookform",
+    "kneeshaw",
+    "NEXTAUTH",
+    "Parens",
+    "signin",
     "tailwindcss"
   ],
   "editor.codeActionsOnSave": {
