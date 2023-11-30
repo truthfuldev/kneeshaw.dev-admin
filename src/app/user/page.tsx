@@ -55,9 +55,11 @@ export default function User() {
             <TableCell>Developer</TableCell>
 
             <TableCell className="flex flex-row items-center justify-center gap-[20px]">
-              <Button className="bg-transparent hover:border hover:bg-transparent">
-                <HiOutlinePencilSquare className="text-lg text-black" />
-              </Button>
+              <Link href="user/1">
+                <Button className="bg-transparent hover:border hover:bg-transparent">
+                  <HiOutlinePencilSquare className="text-lg text-black" />
+                </Button>
+              </Link>
 
               <AlertDialog>
                 <AlertDialogTrigger>
