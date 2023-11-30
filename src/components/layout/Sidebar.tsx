@@ -1,10 +1,12 @@
 "use client";
 
 import Link from "next/link";
+import { usePathname } from "next/navigation";
+import { signOut } from "next-auth/react";
+
+import clsx from "clsx";
 
 import Logo from "./Logo";
-import clsx from "clsx";
-import { usePathname } from "next/navigation";
 
 export default function Sidebar() {
   const pathName = usePathname();
@@ -79,7 +81,15 @@ export default function Sidebar() {
         >
           Settings
         </Link>
-        <Link href="/">Sign Out</Link>
+        <Link
+          href=""
+          onClick={(e) => {
+            e.preventDefault();
+            signOut();
+          }}
+        >
+          Sign Out
+        </Link>
       </div>
     </aside>
   );
