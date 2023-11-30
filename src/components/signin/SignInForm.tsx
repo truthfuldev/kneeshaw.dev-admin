@@ -18,9 +18,14 @@ import Logo from "../layout/Logo";
 import Link from "next/link";
 
 const formSchema = z.object({
-  email: z.string().email().min(5, {
-    message: "Email must be at least 5 characters."
-  }),
+  email: z
+    .string()
+    .email({
+      message: "Please enter a valid email address."
+    })
+    .min(5, {
+      message: "Email must be at least 5 characters."
+    }),
   password: z
     .string()
     .min(5, { message: "Password must be at least 5 characters." })
