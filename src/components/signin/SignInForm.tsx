@@ -1,6 +1,6 @@
 "use client";
 
-import { signIn, getCsrfToken } from "next-auth/react";
+import { signIn } from "next-auth/react";
 
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
@@ -53,7 +53,7 @@ export default function SignInForm() {
 
   return (
     <div className="flex w-full flex-col items-center justify-center gap-2 rounded-lg border px-4 py-8">
-      <Logo />
+      <Logo disableLink />
 
       <h6 className="mb-8 text-2xl font-bold">Good to see you again.</h6>
 

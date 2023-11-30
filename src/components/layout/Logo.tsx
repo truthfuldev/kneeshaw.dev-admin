@@ -2,14 +2,20 @@
 
 import Link from "next/link";
 
-export default function Logo() {
-  return (
-    <Link href="/">
-      <img
-        className="min-h-[86px] min-w-[192px]"
-        src={"/logo/logo-black.png"}
-        alt="Logo"
-      />
-    </Link>
+interface LogoProps {
+  disableLink?: boolean;
+}
+
+export default function Logo({ disableLink }: LogoProps) {
+  const logoImg = (
+    <img
+      className="min-h-[86px] min-w-[192px]"
+      src={"/logo/logo-black.png"}
+      alt="Logo"
+    />
   );
+
+  if (disableLink) return logoImg;
+
+  return <Link href="/">{logoImg}</Link>;
 }
