@@ -20,7 +20,7 @@ export default function Card() {
       <img src="/images/image01.png" />
       <p className="text-[white]">Chains of Koronos</p>
       <p className="text-[#AFC348]">$123.0</p>
-      <button className="ml-auto w-1/2 rounded-xl border-[1px] border-[#AFC348] bg-transparent text-[#AFC348]">
+      <button className="ml-auto  h-[50px] w-1/2 rounded-xl border-[1px] border-[#AFC348] bg-transparent text-[#AFC348]">
         Details
       </button>
     </div>
