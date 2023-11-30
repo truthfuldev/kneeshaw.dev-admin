@@ -3,7 +3,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 
-export default function CreateGame() {
+export default function CreateBlog() {
   const [values, setValues] = useState({
     image: "",
     title: "",
@@ -50,13 +50,6 @@ export default function CreateGame() {
         type="text"
         placeholder="Input Description"
         name="description"
-        onChange={handleChange}
-        className="h-[52px] w-full rounded-[16px] border-[1px] border-[#36322f] bg-transparent pl-[10px]"
-      />
-      <input
-        type="number"
-        placeholder="Input Price"
-        name="price"
         onChange={handleChange}
         className="h-[52px] w-full rounded-[16px] border-[1px] border-[#36322f] bg-transparent pl-[10px]"
       />

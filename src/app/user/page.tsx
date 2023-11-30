@@ -2,6 +2,8 @@ import { Metadata } from "next";
 
 import { SITE_TITLE } from "@/utils/constants";
 import Link from "next/link";
+import { Button } from "@/components/ui/button";
+
 import {
   Table,
   TableBody,
@@ -11,9 +13,8 @@ import {
   TableHeader,
   TableRow
 } from "@/components/ui/table";
-import { FaPencil } from "react-icons/fa6";
-import { MdDelete } from "react-icons/md";
-
+import { HiOutlinePencilSquare } from "react-icons/hi2";
+import { MdDeleteOutline } from "react-icons/md";
 export const metadata: Metadata = {
   title: `${SITE_TITLE} - User`,
   description: `${SITE_TITLE} - User`
@@ -40,11 +41,14 @@ export default function User() {
             <TableCell>ivan@gmail.com</TableCell>
             <TableCell>Ivan</TableCell>
             <TableCell>Developer</TableCell>
-            <TableCell className="flex flex-row gap-[20px] text-right">
-              <Link href="/user/id">
-                <FaPencil />
-              </Link>
-              <MdDelete />
+            <TableCell className="flex flex-row items-center justify-center gap-[20px]">
+              <Button className="bg-transparent hover:border hover:bg-transparent">
+                <HiOutlinePencilSquare className="text-lg text-black" />
+              </Button>
+
+              <Button className="bg-transparent hover:border hover:bg-transparent">
+                <MdDeleteOutline className="text-xl text-black" />
+              </Button>
             </TableCell>
           </TableRow>
         </TableBody>
