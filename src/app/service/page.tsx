@@ -1,8 +1,7 @@
 import { Metadata } from "next";
 
 import { SITE_TITLE } from "@/utils/constants";
-import { LuPlusCircle } from "react-icons/lu";
-
+import { FaPlus } from "react-icons/fa";
 import { Button } from "@/components/ui/button";
 import ServiceCard from "@/components/services/ServiceCard";
 
@@ -83,10 +82,10 @@ export default function Service() {
     }
   ];
   return (
-    <main className="mt-[18px] flex flex-col gap-[60px] p-4">
-      <div className="mr-[20px] mt-[36px] flex justify-end">
+    <main className="mt-[24px] flex flex-col gap-[60px] p-4">
+      <div className="mr-[20px] flex justify-end">
         <Button type="button">
-          <LuPlusCircle className="text-lg" />
+          <FaPlus className="text-md" />
           <span className="ml-[5px] text-[16px]">Add</span>
         </Button>
       </div>

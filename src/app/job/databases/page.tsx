@@ -10,6 +10,7 @@ import {
   TableRow
 } from "@/components/ui/table";
 import { Button } from "@/components/ui/button";
+import { FaPlus } from "react-icons/fa";
 import { HiOutlinePencilSquare } from "react-icons/hi2";
 import { MdDeleteOutline } from "react-icons/md";
 
@@ -55,8 +56,9 @@ export default function Databases() {
   return (
     <section className="mt-[50px] flex flex-col gap-[20px]">
       <div className="mr-[20px] flex justify-end">
-        <Button type="button" variant="outline">
-          Add
+        <Button type="button">
+          <FaPlus className="text-md" />
+          <span className="ml-[5px] text-[16px]">Add</span>
         </Button>
       </div>
 
