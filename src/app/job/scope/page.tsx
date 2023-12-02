@@ -22,17 +22,17 @@ export const metadata: Metadata = {
 const scope = [
   {
     id: "1",
-    skill: "Small",
+    scope: "Small",
     description: "Quick Task"
   },
   {
     id: "2",
-    skill: "Medium",
+    scope: "Medium",
     description: "Well defined Project"
   },
   {
     id: "3",
-    skill: "Large",
+    scope: "Large",
     description: "Long Term Project"
   }
 ];
@@ -63,7 +63,7 @@ export default function Scope() {
           {scope.map((scope) => (
             <TableRow key={scope.id}>
               <TableCell className="font-medium">{scope.id}</TableCell>
-              <TableCell>{scope.skill}</TableCell>
+              <TableCell>{scope.scope}</TableCell>
               <TableCell>{scope.description}</TableCell>
               <TableCell className="flex flex-row items-center justify-center gap-[20px]">
                 <Button className="bg-transparent hover:border hover:bg-transparent">
