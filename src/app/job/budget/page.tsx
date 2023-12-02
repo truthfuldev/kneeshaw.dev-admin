@@ -19,7 +19,7 @@ export default function Budget() {
 
         <div className="mt-[24px] flex h-auto w-full flex-col gap-[36px] rounded-md border border-black p-4">
           <div className="flex h-auto flex-col items-center justify-around gap-[48px] rounded-lg p-12 lg:flex-row">
-            <div className="w-[300px] rounded-md border border-black py-6 text-center text-[18px] font-[600]">
+            <div className="w-[300px] rounded-md border border-black py-6 text-center text-[18px] font-[500]">
               Hourly Rate
             </div>
 
@@ -69,7 +69,7 @@ export default function Budget() {
           <div className="border-[1px] border-gray-300" />
 
           <div className="mb-[24px] flex h-auto flex-col items-center justify-around gap-[48px] rounded-lg p-12 lg:flex-row">
-            <div className="w-[300px] rounded-md border border-black py-6 text-center text-[18px] font-[600]">
+            <div className="w-[300px] rounded-md border border-black py-6 text-center text-[18px] font-[500]">
               Project Budget
             </div>
 
