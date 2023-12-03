@@ -1,8 +1,14 @@
 import NextAuth, { NextAuthOptions } from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
 
+import axiosInstance from "@/app/api/axiosInstance";
+
 export const authOptions: NextAuthOptions = {
   secret: process.env.NEXTAUTH_SECRET,
+
+  // session: {
+  //   strategy: "jwt"
+  // },
 
   pages: {
     signIn: "/auth/signin"
@@ -10,7 +16,6 @@ export const authOptions: NextAuthOptions = {
 
   providers: [
     CredentialsProvider({
-      // The name to display on the sign in form (e.g. "Sign in with...")
       name: "Credentials",
 
       credentials: {
@@ -22,57 +27,39 @@ export const authOptions: NextAuthOptions = {
         password: { label: "Password", type: "password" }
       },
 
-      async authorize(credentials: any, req: any) {
-        console.log(credentials);
+      async authorize(credentials: any) {
+        const { email, password } = credentials;
 
-        let user = null;
-        if (credentials.email === "truthfuldev@gmail.com") {
-          user = {
-            email: "truthfuldev@gmail.com",
-            password: "123456"
-          };
-        }
+        const res = await axiosInstance.post("/auth/login", {
+          email,
+          password
+        });
 
-        if (user) {
-          return user;
-        } else {
-          return null;
+        if (res.status === 200) {
+          return res.data;
         }
       }
     })
   ],
 
   callbacks: {
-    async jwt({ token, user, session }) {
-      // the processing of JWT occurs before handling sessions.
-      console.log("jwt callback ", { token, user, session });
+    async jwt({ token, user, account }) {
+      console.log("jwt callback ", { token, user, account });
 
-      if (user) {
+      if (account && account.type === "credentials") {
+        token.user = user;
         token.accessToken = user.accessToken;
-        token.refreshToken = user.refreshToken;
-        token.accessTokenExpires = user.accessTokenExpires;
-        token.role = user.role;
-        token.id = user.id;
       }
 
       return token;
     },
 
-    //  The session receives the token from JWT
-    async session({ session, token, user }) {
-      console.log("session callback ", { token, user, session });
+    async session({ session, token }) {
+      console.log("session callback ", { session, token });
 
-      return {
-        ...session,
-        user: {
-          ...session.user,
-          accessToken: token.accessToken as string,
-          refreshToken: token.refreshToken as string,
-          role: token.role,
-          id: token.id
-        },
-        error: token.error
-      };
+      session.accessToken = token.accessToken;
+
+      return session;
     }
   }
 };
