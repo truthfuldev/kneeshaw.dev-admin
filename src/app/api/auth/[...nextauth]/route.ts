@@ -6,12 +6,15 @@ import axiosInstance from "@/app/api/axiosInstance";
 export const authOptions: NextAuthOptions = {
   secret: process.env.NEXTAUTH_SECRET,
 
-  // session: {
-  //   strategy: "jwt"
-  // },
+  session: {
+    strategy: "jwt",
+    maxAge: 30 * 24 * 60 * 60,
+    updateAge: 24 * 60 * 60
+  },
 
   pages: {
-    signIn: "/auth/signin"
+    signIn: "/auth/signin",
+    error: "/auth/signin"
   },
 
   providers: [
@@ -28,15 +31,19 @@ export const authOptions: NextAuthOptions = {
       },
 
       async authorize(credentials: any) {
-        const { email, password } = credentials;
+        try {
+          const { email, password } = credentials;
 
-        const res = await axiosInstance.post("/auth/login", {
-          email,
-          password
-        });
+          const res = await axiosInstance.post("/auth/login", {
+            email,
+            password
+          });
 
-        if (res.status === 200) {
-          return res.data;
+          if (res.status === 200) {
+            return res.data;
+          }
+        } catch (e) {
+          throw new Error("Email or password is incorrect");
         }
       }
     })
@@ -44,24 +51,23 @@ export const authOptions: NextAuthOptions = {
 
   callbacks: {
     async jwt({ token, user, account }) {
-      console.log("jwt callback ", { token, user, account });
-
       if (account && account.type === "credentials") {
-        token.user = user;
+        token.user = user.user;
         token.accessToken = user.accessToken;
       }
 
       return token;
     },
 
-    async session({ session, token }) {
-      console.log("session callback ", { session, token });
-
-      session.accessToken = token.accessToken;
+    async session({ session, token, user }) {
+      session.user = token.user as IUser;
+      session.accessToken = token.accessToken as string;
 
       return session;
     }
-  }
+  },
+
+  debug: false
 };
 
 const handler = NextAuth(authOptions);

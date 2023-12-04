@@ -16,8 +16,8 @@ import { MdDeleteOutline } from "react-icons/md";
 import { Input } from "@/components/ui/input";
 
 export const metadata: Metadata = {
-  title: `${SITE_TITLE} - Period`,
-  description: `${SITE_TITLE} - Period`
+  title: `${SITE_TITLE} - Job Period`,
+  description: `${SITE_TITLE} - Job Period`
 };
 
 const period = [

@@ -9,14 +9,27 @@ import {
   TableHeader,
   TableRow
 } from "@/components/ui/table";
+
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger
+} from "@/components/ui/dialog";
+
 import { FaPlus } from "react-icons/fa";
 import { Button } from "@/components/ui/button";
 import { HiOutlinePencilSquare } from "react-icons/hi2";
 import { MdDeleteOutline } from "react-icons/md";
+import { Label } from "@/components/ui/label";
+import { Input } from "@/components/ui/input";
 
 export const metadata: Metadata = {
-  title: `${SITE_TITLE} - Skills`,
-  description: `${SITE_TITLE} - Skills`
+  title: `${SITE_TITLE} - Job Skills`,
+  description: `${SITE_TITLE} - Job Skills`
 };
 
 const skills = [
@@ -66,10 +79,39 @@ export default function Skills() {
   return (
     <section className="mt-[50px] flex flex-col gap-[20px]">
       <div className="mr-[20px] flex justify-end">
-        <Button type="button">
-          <FaPlus className="text-md" />
-          <span className="ml-[5px] text-[16px]">Add</span>
-        </Button>
+        <Dialog>
+          <DialogTrigger asChild>
+            <Button type="button">
+              <FaPlus className="text-md" />
+              <span className="ml-[5px] text-[16px]">Add</span>
+            </Button>
+          </DialogTrigger>
+          <DialogContent className="sm:max-w-[425px]">
+            <DialogHeader>
+              <DialogTitle>Add Skill</DialogTitle>
+              <DialogDescription>
+                Make changes to your skill here. Click save when you're done.
+              </DialogDescription>
+            </DialogHeader>
+            <div className="grid gap-4 py-4">
+              <div className="grid grid-cols-4 items-center gap-4">
+                <Label htmlFor="name" className="text-right">
+                  Name
+                </Label>
+                <Input id="name" defaultValue="" className="col-span-3" />
+              </div>
+              <div className="grid grid-cols-4 items-center gap-4">
+                <Label htmlFor="username" className="text-right">
+                  Username
+                </Label>
+                <Input id="username" defaultValue="" className="col-span-3" />
+              </div>
+            </div>
+            <DialogFooter>
+              <Button type="submit">Add</Button>
+            </DialogFooter>
+          </DialogContent>
+        </Dialog>
       </div>
 
       <Table className="text-center">

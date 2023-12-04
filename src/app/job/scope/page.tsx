@@ -15,8 +15,8 @@ import { HiOutlinePencilSquare } from "react-icons/hi2";
 import { MdDeleteOutline } from "react-icons/md";
 
 export const metadata: Metadata = {
-  title: `${SITE_TITLE} - Scope`,
-  description: `${SITE_TITLE} - Scope`
+  title: `${SITE_TITLE} - Job Scope`,
+  description: `${SITE_TITLE} - Job Scope`
 };
 
 const scope = [

@@ -61,7 +61,7 @@ export default function Sidebar() {
           Service
         </Link>
         <Link
-          href="/job"
+          href="/job/skills"
           className={clsx(
             "text-[16px] ",
             pathName.includes("/job") && "font-bold"
