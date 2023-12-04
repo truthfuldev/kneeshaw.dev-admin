@@ -10,6 +10,7 @@ import {
   TableRow
 } from "@/components/ui/table";
 import { Button } from "@/components/ui/button";
+import { FaPlus } from "react-icons/fa";
 import { HiOutlinePencilSquare } from "react-icons/hi2";
 import { MdDeleteOutline } from "react-icons/md";
 
@@ -21,17 +22,17 @@ export const metadata: Metadata = {
 const scope = [
   {
     id: "1",
-    skill: "Small",
+    scope: "Small",
     description: "Quick Task"
   },
   {
     id: "2",
-    skill: "Medium",
+    scope: "Medium",
     description: "Well defined Project"
   },
   {
     id: "3",
-    skill: "Large",
+    scope: "Large",
     description: "Long Term Project"
   }
 ];
@@ -40,8 +41,9 @@ export default function Scope() {
   return (
     <section className="mt-[50px] flex flex-col gap-[20px]">
       <div className="mr-[20px] flex justify-end">
-        <Button type="button" variant="outline">
-          Add
+        <Button type="button">
+          <FaPlus className="text-md" />
+          <span className="ml-[5px] text-[16px]">Add</span>
         </Button>
       </div>
 
@@ -61,7 +63,7 @@ export default function Scope() {
           {scope.map((scope) => (
             <TableRow key={scope.id}>
               <TableCell className="font-medium">{scope.id}</TableCell>
-              <TableCell>{scope.skill}</TableCell>
+              <TableCell>{scope.scope}</TableCell>
               <TableCell>{scope.description}</TableCell>
               <TableCell className="flex flex-row items-center justify-center gap-[20px]">
                 <Button className="bg-transparent hover:border hover:bg-transparent">

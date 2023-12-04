@@ -44,10 +44,8 @@ export default function SignInForm() {
 
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
     const res = await signIn("credentials", {
-      // redirect: true,
       email: values.email,
-      password: values.password,
-      callbackUrl: "/"
+      password: values.password
     });
   };
 
