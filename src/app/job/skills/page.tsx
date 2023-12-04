@@ -1,7 +1,6 @@
 import { Metadata } from "next";
 
 import { SITE_TITLE } from "@/utils/constants";
-
 import JobSkillsList from "@/components/job/skills/list";
 
 export const metadata: Metadata = {
