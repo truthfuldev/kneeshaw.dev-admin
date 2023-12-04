@@ -5,8 +5,8 @@ import { Input } from "@/components/ui/input";
 import { TiArrowSortedUp, TiArrowSortedDown } from "react-icons/ti";
 
 export const metadata: Metadata = {
-  title: `${SITE_TITLE} - Budget`,
-  description: `${SITE_TITLE} - Budget`
+  title: `${SITE_TITLE} - Job Budget`,
+  description: `${SITE_TITLE} - Job Budget`
 };
 
 export default function Budget() {
