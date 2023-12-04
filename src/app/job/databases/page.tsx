@@ -10,6 +10,7 @@ import {
   TableRow
 } from "@/components/ui/table";
 import { Button } from "@/components/ui/button";
+import { FaPlus } from "react-icons/fa";
 import { HiOutlinePencilSquare } from "react-icons/hi2";
 import { MdDeleteOutline } from "react-icons/md";
 
@@ -21,32 +22,32 @@ export const metadata: Metadata = {
 const databases = [
   {
     id: "1",
-    skill: "Godot",
+    database: "Godot",
     description: "description1"
   },
   {
     id: "2",
-    skill: "2D",
+    database: "2D",
     description: "description2"
   },
   {
     id: "3",
-    skill: "3D",
+    database: "3D",
     description: "description3"
   },
   {
     id: "4",
-    skill: "Shaders",
+    database: "Shaders",
     description: "description4"
   },
   {
     id: "5",
-    skill: "Environment",
+    database: "Environment",
     description: "description5"
   },
   {
     id: "6",
-    skill: "System",
+    database: "System",
     description: "description6"
   }
 ];
@@ -55,8 +56,9 @@ export default function Databases() {
   return (
     <section className="mt-[50px] flex flex-col gap-[20px]">
       <div className="mr-[20px] flex justify-end">
-        <Button type="button" variant="outline">
-          Add
+        <Button type="button">
+          <FaPlus className="text-md" />
+          <span className="ml-[5px] text-[16px]">Add</span>
         </Button>
       </div>
 
@@ -76,7 +78,7 @@ export default function Databases() {
           {databases.map((database) => (
             <TableRow key={database.id}>
               <TableCell className="font-medium">{database.id}</TableCell>
-              <TableCell>{database.skill}</TableCell>
+              <TableCell>{database.database}</TableCell>
               <TableCell>{database.description}</TableCell>
               <TableCell className="flex flex-row items-center justify-center gap-[20px]">
                 <Button className="bg-transparent hover:border hover:bg-transparent">

@@ -9,7 +9,7 @@ import {
   TableHeader,
   TableRow
 } from "@/components/ui/table";
-import { LuPlusCircle } from "react-icons/lu";
+import { FaPlus } from "react-icons/fa";
 import { Button } from "@/components/ui/button";
 import { HiOutlinePencilSquare } from "react-icons/hi2";
 import { MdDeleteOutline } from "react-icons/md";
@@ -22,32 +22,32 @@ export const metadata: Metadata = {
 const services = [
   {
     id: "1",
-    skill: "Godot",
+    service: "Godot",
     description: "description1"
   },
   {
     id: "2",
-    skill: "2D",
+    service: "2D",
     description: "description2"
   },
   {
     id: "3",
-    skill: "3D",
+    service: "3D",
     description: "description3"
   },
   {
     id: "4",
-    skill: "Shaders",
+    service: "Shaders",
     description: "description4"
   },
   {
     id: "5",
-    skill: "Environment",
+    service: "Environment",
     description: "description5"
   },
   {
     id: "6",
-    skill: "System",
+    service: "System",
     description: "description6"
   }
 ];
@@ -57,8 +57,8 @@ export default function Services() {
     <section className="mt-[50px] flex flex-col gap-[20px]">
       <div className="mr-[20px] flex justify-end">
         <Button type="button">
-          <LuPlusCircle className="text-lg" />
-          <span className="ml-[5px] text-[16px]">Add</span>{" "}
+          <FaPlus className="text-md" />
+          <span className="ml-[5px] text-[16px]">Add</span>
         </Button>
       </div>
 
@@ -78,7 +78,7 @@ export default function Services() {
           {services.map((service) => (
             <TableRow key={service.id}>
               <TableCell className="font-medium">{service.id}</TableCell>
-              <TableCell>{service.skill}</TableCell>
+              <TableCell>{service.service}</TableCell>
               <TableCell>{service.description}</TableCell>
               <TableCell className="flex flex-row items-center justify-center gap-[20px]">
                 <Button className="bg-transparent hover:border hover:bg-transparent">

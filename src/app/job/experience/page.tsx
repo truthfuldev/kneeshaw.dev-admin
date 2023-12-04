@@ -10,6 +10,7 @@ import {
   TableRow
 } from "@/components/ui/table";
 import { Button } from "@/components/ui/button";
+import { FaPlus } from "react-icons/fa";
 import { HiOutlinePencilSquare } from "react-icons/hi2";
 import { MdDeleteOutline } from "react-icons/md";
 
@@ -21,17 +22,17 @@ export const metadata: Metadata = {
 const experience = [
   {
     id: "1",
-    skill: "Small",
+    experience: "Small",
     description: "Looking for someone relatively new on this field"
   },
   {
     id: "2",
-    skill: "Medium",
+    experience: "Medium",
     description: "Looking for substantial experience in this field"
   },
   {
     id: "3",
-    skill: "Large",
+    experience: "Large",
     description: "Looking for comprehensive and deep expertise in this field"
   }
 ];
@@ -40,8 +41,9 @@ export default function Experience() {
   return (
     <section className="mt-[50px] flex flex-col gap-[20px]">
       <div className="mr-[20px] flex justify-end">
-        <Button type="button" variant="outline">
-          Add
+        <Button type="button">
+          <FaPlus className="text-md" />
+          <span className="ml-[5px] text-[16px]">Add</span>
         </Button>
       </div>
 
@@ -61,7 +63,7 @@ export default function Experience() {
           {experience.map((experience) => (
             <TableRow key={experience.id}>
               <TableCell className="font-medium">{experience.id}</TableCell>
-              <TableCell>{experience.skill}</TableCell>
+              <TableCell>{experience.experience}</TableCell>
               <TableCell>{experience.description}</TableCell>
               <TableCell className="flex flex-row items-center justify-center gap-[20px]">
                 <Button className="bg-transparent hover:border hover:bg-transparent">
