@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 
-import { FaPlus } from "react-icons/fa";
+import { HiOutlinePencilSquare } from "react-icons/hi2";
 import { toast } from "react-toastify";
 
 import { Button } from "@/components/ui/button";
@@ -17,15 +17,17 @@ import {
 } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { createJobSkill } from "@/app/api/JobSkillService";
+import { getJobSkill, updateJobSkill } from "@/app/api/JobSkillService";
 
-interface JobSkillCreateDialogProps {
-  onCreated: () => void;
+interface JobSkillEditDialogProps {
+  id: string;
+  onUpdated: () => void;
 }
 
-export default function JobSkillCreateDialog({
-  onCreated
-}: JobSkillCreateDialogProps) {
+export default function JobSkillEditDialog({
+  id,
+  onUpdated
+}: JobSkillEditDialogProps) {
   const [open, setOpen] = useState(false);
   const [values, setValues] = useState<{
     name: string;
@@ -39,32 +41,43 @@ export default function JobSkillCreateDialog({
 
   const handleSaveClick = async () => {
     try {
-      await createJobSkill(values);
+      await updateJobSkill(id, values);
       setOpen(false);
-      onCreated();
-      toast("Job skill created successfully.", { type: "success" });
+      onUpdated();
+      toast("Job skill updated successfully.", { type: "success" });
     } catch (err: any) {
       toast(err.response.data.message, { type: "error" });
     }
   };
 
+  const initialize = async () => {
+    try {
+      const res = await getJobSkill(id);
+      setValues({
+        name: res.data.data.name,
+        description: res.data.data.description
+      });
+    } catch (err) {
+      console.error("Initialize error: ", err);
+    }
+  };
+
   useEffect(() => {
-    setValues({ name: "", description: "" });
-  }, [open]);
+    initialize();
+  }, [id]);
 
   return (
     <div className="mr-[20px] flex justify-end">
       <Dialog open={open} onOpenChange={setOpen}>
         <DialogTrigger asChild>
-          <Button>
-            <FaPlus className="text-md" />
-            <span className="ml-[5px] text-[16px]">Add</span>
+          <Button className="bg-transparent hover:border hover:bg-transparent">
+            <HiOutlinePencilSquare className="text-lg text-black" />
           </Button>
         </DialogTrigger>
 
         <DialogContent>
           <DialogHeader>
-            <DialogTitle>Add Skill</DialogTitle>
+            <DialogTitle>Edit Skill</DialogTitle>
           </DialogHeader>
 
           <div className="grid gap-4 py-4">

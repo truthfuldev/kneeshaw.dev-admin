@@ -13,7 +13,8 @@
     "NEXTAUTH",
     "Parens",
     "signin",
-    "tailwindcss"
+    "tailwindcss",
+    "toastify"
   ],
   "editor.codeActionsOnSave": {
     "source.fixAll.eslint": true,

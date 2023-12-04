@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 
-import { FaPlus } from "react-icons/fa";
+import { MdDeleteOutline } from "react-icons/md";
 import { toast } from "react-toastify";
 
 import { Button } from "@/components/ui/button";
@@ -17,15 +17,21 @@ import {
 } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { createJobSkill } from "@/app/api/JobSkillService";
+import {
+  deleteJobSkill,
+  getJobSkill,
+  updateJobSkill
+} from "@/app/api/JobSkillService";
 
-interface JobSkillCreateDialogProps {
-  onCreated: () => void;
+interface JobSkillDeleteDialogProps {
+  id: string;
+  onDeleted: () => void;
 }
 
-export default function JobSkillCreateDialog({
-  onCreated
-}: JobSkillCreateDialogProps) {
+export default function JobSkillDeleteDialog({
+  id,
+  onDeleted
+}: JobSkillDeleteDialogProps) {
   const [open, setOpen] = useState(false);
   const [values, setValues] = useState<{
     name: string;
@@ -37,34 +43,45 @@ export default function JobSkillCreateDialog({
       setValues((prev) => ({ ...prev, [field]: e.target.value }));
     };
 
-  const handleSaveClick = async () => {
+  const handleRemoveClick = async () => {
     try {
-      await createJobSkill(values);
+      await deleteJobSkill(id);
       setOpen(false);
-      onCreated();
-      toast("Job skill created successfully.", { type: "success" });
+      onDeleted();
+      toast("Job skill removed successfully.", { type: "success" });
     } catch (err: any) {
       toast(err.response.data.message, { type: "error" });
     }
   };
 
+  const initialize = async () => {
+    try {
+      const res = await getJobSkill(id);
+      setValues({
+        name: res.data.data.name,
+        description: res.data.data.description
+      });
+    } catch (err) {
+      console.error("Initialize error: ", err);
+    }
+  };
+
   useEffect(() => {
-    setValues({ name: "", description: "" });
-  }, [open]);
+    initialize();
+  }, [id]);
 
   return (
     <div className="mr-[20px] flex justify-end">
       <Dialog open={open} onOpenChange={setOpen}>
         <DialogTrigger asChild>
-          <Button>
-            <FaPlus className="text-md" />
-            <span className="ml-[5px] text-[16px]">Add</span>
+          <Button className="bg-transparent hover:border hover:bg-transparent">
+            <MdDeleteOutline className="text-xl text-black" />
           </Button>
         </DialogTrigger>
 
         <DialogContent>
           <DialogHeader>
-            <DialogTitle>Add Skill</DialogTitle>
+            <DialogTitle>Remove Skill</DialogTitle>
           </DialogHeader>
 
           <div className="grid gap-4 py-4">
@@ -73,6 +90,7 @@ export default function JobSkillCreateDialog({
                 Name
               </Label>
               <Input
+                readOnly
                 id="name"
                 className="col-span-3"
                 value={values.name}
@@ -84,6 +102,7 @@ export default function JobSkillCreateDialog({
                 Description
               </Label>
               <Input
+                readOnly
                 id="description"
                 className="col-span-3"
                 value={values.description}
@@ -97,7 +116,7 @@ export default function JobSkillCreateDialog({
               <Button variant="outline">Cancel</Button>
             </DialogClose>
 
-            <Button onClick={handleSaveClick}>Save</Button>
+            <Button onClick={handleRemoveClick}>Remove</Button>
           </DialogFooter>
         </DialogContent>
       </Dialog>
