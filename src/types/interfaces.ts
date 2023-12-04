@@ -8,3 +8,9 @@ interface IUser {
   role: string;
   status: number;
 }
+
+interface IJobSkill {
+  _id: string;
+  name: string;
+  description: string;
+}
