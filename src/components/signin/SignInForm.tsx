@@ -1,6 +1,10 @@
 "use client";
 
-import { signIn } from "next-auth/react";
+import Link from "next/link";
+import { useRouter, useSearchParams } from "next/navigation";
+import { signIn, useSession } from "next-auth/react";
+
+import { useEffect, useState } from "react";
 
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
@@ -17,7 +21,8 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import Logo from "../layout/Logo";
-import Link from "next/link";
+
+import { SESSION_STATUS } from "@/utils/constants";
 
 const formSchema = z.object({
   email: z
@@ -34,6 +39,10 @@ const formSchema = z.object({
 });
 
 export default function SignInForm() {
+  const params = useSearchParams();
+  const router = useRouter();
+  const session = useSession();
+
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -42,12 +51,32 @@ export default function SignInForm() {
     }
   });
 
+  const [error, setError] = useState<string | null>("");
+
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
-    const res = await signIn("credentials", {
-      email: values.email,
-      password: values.password
-    });
+    try {
+      await signIn("credentials", {
+        email: values.email,
+        password: values.password
+      });
+    } catch (e) {
+      console.error(e);
+    }
   };
+
+  useEffect(() => {
+    setError(params.get("error"));
+  }, [params]);
+
+  useEffect(() => {
+    if (session.status === SESSION_STATUS.AUTHENTICATED) {
+      router.push("/");
+    }
+  }, [session]);
+
+  useEffect(() => {
+    if (form.formState.isDirty) setError(null);
+  }, [form.formState.isDirty]);
 
   return (
     <div className="flex w-full flex-col items-center justify-center gap-2 rounded-lg border px-4 py-8">
@@ -59,6 +88,7 @@ export default function SignInForm() {
         <form
           onSubmit={form.handleSubmit(onSubmit)}
           className="flex w-full flex-col gap-4"
+          method="post"
         >
           <FormField
             control={form.control}
@@ -92,7 +122,11 @@ export default function SignInForm() {
             <Link href="/forgot">Forgot your password?</Link>
           </Button>
 
-          <Button type="submit">Sign In</Button>
+          <Button type="submit" disabled={form.formState.isSubmitting}>
+            Sign In
+          </Button>
+
+          {error && <h5 className="text-red-600">{error}</h5>}
         </form>
       </Form>
     </div>
