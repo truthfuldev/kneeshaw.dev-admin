@@ -2,9 +2,6 @@
 
 import { useEffect, useState } from "react";
 
-import { HiOutlinePencilSquare } from "react-icons/hi2";
-import { MdDeleteOutline } from "react-icons/md";
-
 import {
   Table,
   TableBody,
@@ -13,9 +10,11 @@ import {
   TableHeader,
   TableRow
 } from "@/components/ui/table";
-import { Button } from "@/components/ui/button";
 import { getAllJobSkills } from "@/app/api/JobSkillService";
+
 import JobSkillCreateDialog from "./CreateDialog";
+import JobSkillEditDialog from "./EditDialog";
+import JobSkillDeleteDialog from "./DeleteDialog";
 
 export default function JobSkillsList() {
   const [skills, setSkills] = useState<IJobSkill[]>([]);
@@ -26,6 +25,14 @@ export default function JobSkillsList() {
   };
 
   const handleCreated = () => {
+    initialize();
+  };
+
+  const handleUpdated = () => {
+    initialize();
+  };
+
+  const handleDeleted = () => {
     initialize();
   };
 
@@ -54,15 +61,13 @@ export default function JobSkillsList() {
             <TableRow key={skill._id}>
               <TableCell className="font-medium">{index + 1}</TableCell>
               <TableCell>{skill.name}</TableCell>
-              <TableCell>{skill.description}</TableCell>
+              <TableCell className="text-left">{skill.description}</TableCell>
               <TableCell className="flex flex-row items-center justify-center gap-[20px]">
-                <Button className="bg-transparent hover:border hover:bg-transparent">
-                  <HiOutlinePencilSquare className="text-lg text-black" />
-                </Button>
-
-                <Button className="bg-transparent hover:border hover:bg-transparent">
-                  <MdDeleteOutline className="text-xl text-black" />
-                </Button>
+                <JobSkillEditDialog id={skill._id} onUpdated={handleUpdated} />
+                <JobSkillDeleteDialog
+                  id={skill._id}
+                  onDeleted={handleDeleted}
+                />
               </TableCell>
             </TableRow>
           ))}

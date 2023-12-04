@@ -1,4 +1,7 @@
 import { Montserrat } from "next/font/google";
+
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import "./globals.css";
 
 import { ThemeProvider } from "@/components/ThemeProvider";
@@ -28,6 +31,7 @@ export default function RootLayout({
             disableTransitionOnChange
           >
             {children}
+            <ToastContainer />
           </ThemeProvider>
         </NextAuthProvider>
       </body>

@@ -14,3 +14,11 @@ interface IJobSkill {
   name: string;
   description: string;
 }
+
+interface IJobBudget {
+  _id: string;
+  name: string;
+  type: string;
+  min: number;
+  max: number;
+}
