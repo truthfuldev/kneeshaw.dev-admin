@@ -52,9 +52,11 @@ export default function User() {
   return (
     <section className="mt-[50px] flex flex-col gap-[20px]">
       <div className="mr-[20px] flex justify-end">
-        <Button type="button">
-          <span className="ml-[5px] text-[16px]">Add</span>
-        </Button>
+        <Link href="user/1">
+          <Button type="button">
+            <span className="ml-[5px] text-[16px]">Add</span>
+          </Button>
+        </Link>
       </div>
 
       <Table className="text-center">
@@ -83,12 +85,13 @@ export default function User() {
                     <HiOutlinePencilSquare className="text-lg text-black" />
                   </Button>
                 </Link>
-                {/* <AlertDialog>
-                  <AlertDialogTrigger> */}
-                <Button className="bg-transparent hover:border hover:bg-transparent">
-                  <MdDeleteOutline className="text-xl text-black" />
-                </Button>
-                {/* </AlertDialogTrigger>
+
+                <AlertDialog>
+                  <AlertDialogTrigger asChild>
+                    <Button className="bg-transparent hover:border hover:bg-transparent">
+                      <MdDeleteOutline className="text-xl text-black" />
+                    </Button>
+                  </AlertDialogTrigger>
                   <AlertDialogContent>
                     <AlertDialogHeader>
                       <AlertDialogDescription>
@@ -100,7 +103,7 @@ export default function User() {
                       <AlertDialogAction>yes</AlertDialogAction>
                     </AlertDialogFooter>
                   </AlertDialogContent>
-                </AlertDialog> */}
+                </AlertDialog>
               </TableCell>
             </TableRow>
           ))}
