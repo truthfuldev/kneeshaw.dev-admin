@@ -3,6 +3,7 @@ import { Metadata } from "next";
 import { SITE_TITLE } from "@/utils/constants";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
+import { FaPlus } from "react-icons/fa";
 
 import {
   Table,
@@ -54,6 +55,7 @@ export default function User() {
       <div className="mr-[20px] flex justify-end">
         <Link href="user/1">
           <Button type="button">
+            <FaPlus className="text-md" />
             <span className="ml-[5px] text-[16px]">Add</span>
           </Button>
         </Link>
