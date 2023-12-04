@@ -1,5 +1,7 @@
 "use client";
 
+import { useEffect, useState } from "react";
+
 import { HiOutlinePencilSquare } from "react-icons/hi2";
 import { MdDeleteOutline } from "react-icons/md";
 
@@ -13,7 +15,6 @@ import {
 } from "@/components/ui/table";
 import { Button } from "@/components/ui/button";
 import { getAllJobSkills } from "@/app/api/JobSkillService";
-import { useEffect, useState } from "react";
 import JobSkillCreateDialog from "./CreateDialog";
 
 export default function JobSkillsList() {
